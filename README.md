@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎉 Birthday Wish Website
+
+A beautiful birthday celebration website where users can upload photos and receive personalized birthday wishes with animations!
+
+## Features
+
+- 📝 User form with name, date of birth, and multiple photo uploads
+- 🎈 Animated balloons and festive UI elements
+- 🖼️ Photo collage display with hover effects
+- 💝 Roman Urdu birthday quotes and wishes
+- 👨‍💼 Simple admin dashboard to view all users
+- 🎨 Beautiful gradient backgrounds and animations
+
+## Tech Stack
+
+- **Frontend**: Next.js 13 with App Router
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **Database**: SQLite with Prisma ORM
+- **Validation**: Zod schema validation
+- **Images**: Next.js Image component with local storage
 
 ## Getting Started
 
-First, run the development server:
+### Local Development
 
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Set up environment variables:
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your database URL and blob token
+   ```
+
+3. Set up the database:
+   ```bash
+   npm run db:push
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+### 🚀 Vercel Deployment
+
+#### Step 1: Push to GitHub
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/yourusername/birthday-wish-website.git
+git push -u origin main
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Step 2: Deploy on Vercel
+1. Go to [vercel.com](https://vercel.com) and sign in
+2. Click "New Project"
+3. Import your GitHub repository
+4. Vercel will auto-detect Next.js settings
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Step 3: Set up Database (FREE)
+**Option A - Neon (Recommended):**
+1. Go to [neon.tech](https://neon.tech)
+2. Create free account (3GB free)
+3. Create new database
+4. Copy the connection string
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Option B - Supabase:**
+1. Go to [supabase.com](https://supabase.com)
+2. Create free project (500MB free)
+3. Get PostgreSQL connection string from settings
 
-## Learn More
+#### Step 4: Configure Environment Variables
+In your Vercel project dashboard:
+1. Go to Settings → Environment Variables
+2. Add these variables:
+   - `DATABASE_URL`: Your PostgreSQL connection string
+   - `BLOB_READ_WRITE_TOKEN`: Vercel Blob storage token
 
-To learn more about Next.js, take a look at the following resources:
+#### Step 5: Set up Vercel Blob Storage
+1. In Vercel dashboard, go to Storage tab
+2. Create a new Blob store
+3. Copy the `BLOB_READ_WRITE_TOKEN`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Step 6: Final Deployment
+1. Push any changes to GitHub
+2. Vercel will automatically deploy
+3. Run database migration in production:
+   ```bash
+   npx prisma db push
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🌐 Production URLs
+- **Main Site**: `https://your-project.vercel.app`
+- **Admin Panel**: `https://your-project.vercel.app/admin`
 
-## Deploy on Vercel
+## Admin Access
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Visit `/admin` route
+- Password: `admin123`
+- View all user submissions with photos and details
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+birthday-wish-website/
+├── src/
+│   ├── app/
+│   │   ├── admin/           # Admin dashboard
+│   │   ├── api/             # API routes
+│   │   └── globals.css      # Global styles
+│   ├── components/          # React components
+│   └── lib/                 # Utilities and database
+├── prisma/                  # Database schema
+└── public/uploads/          # Uploaded images
+```
+
+## Created with ❤️ by Jawad
