@@ -9,6 +9,7 @@ import { userSchema } from '@/lib/validations'
 import { z } from 'zod'
 
 interface UserFormProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSuccess: (userData: any) => void
 }
 
@@ -62,9 +63,10 @@ export default function UserForm({ onSuccess }: UserFormProps) {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {}
-        error.errors.forEach((err) => {
+        error.issues.forEach((err) => {
           if (err.path) {
-            fieldErrors[err.path[0]] = err.message
+            const key = String(err.path[0])
+            fieldErrors[key] = err.message
           }
         })
         setErrors(fieldErrors)

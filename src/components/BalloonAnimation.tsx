@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { JSX, useEffect, useState } from 'react'
 
 const Balloon = ({ color, delay, duration }: { color: string; delay: number; duration: number }) => (
   <div

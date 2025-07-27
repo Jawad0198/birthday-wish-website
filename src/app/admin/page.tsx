@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -22,7 +22,7 @@ export default function AdminPage() {
   const [users, setUsers] = useState<User[]>([])
   const [loading, setLoading] = useState(false)
 
-  const adminPassword = 'admin123' // Simple password as requested
+  const adminPassword = 'admin1234' // Simple password as requested
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
